@@ -16,7 +16,9 @@ The change directory to the cloned project's directory using:
 
 `cd shopat/`
 
-When you are in the directory
+When you are in the directory use the below code to run the app.
+
+`flutter run -d <preferred device>`
 
 
 
