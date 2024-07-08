@@ -1,11 +1,19 @@
+import 'dart:io';
 
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shopat/Screens/home.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
-void main() async{
-  await dotenv.load(fileName:'/home/oriohac/StudioProjects/shopat/.env');
+Future<void> main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // final envString = await rootBundle.loadString('assets/.env');
+  // await dotenv.load(fileName: envString);
+
+  await dotenv.load(fileName: ".env.prod");
+
   runApp(const Shopat());
 }
 
@@ -21,4 +29,3 @@ class Shopat extends StatelessWidget {
     );
   }
 }
-

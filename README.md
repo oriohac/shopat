@@ -1,15 +1,10 @@
-# shopat
+# shopat: HNG11 Task 2
 
-A new Flutter project.
+This project is a project to retrieve data which were fed to the Timbu.cloud from [timbu.cloud](https://timbu.cloud) API and display them on a screen.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,

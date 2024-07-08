@@ -4,16 +4,21 @@ class Productsdata {
   final String? description;
   final bool isAvailable;
   final double currentprice;
+  final double availableQuantity;
   Productsdata(
       {required this.name,
       required this.photos,
       this.description,
       required this.isAvailable,
-      required this.currentprice});
+      required this.currentprice,
+      required this.availableQuantity
+      });
+
+      
   factory Productsdata.fromJson(dynamic json) {
     var photoList = json['photos'] as List;
     List<Photo> photos = photoList.map((i) => Photo.fromJson(i)).toList();
-       var currentPriceJson = json['current_price'][0]['NGN'][0];
+    var currentPriceJson = json['current_price'][0]['NGN'][0];
     double currentPrice;
     if (currentPriceJson is String) {
       currentPrice = double.tryParse(currentPriceJson) ?? 0.0;
@@ -25,11 +30,13 @@ class Productsdata {
       currentPrice = 0.0;
     }
     return Productsdata(
-        name: json['name'] ?? '',
-        photos: photos,
-        description: json['description'] ?? '',
-        isAvailable: json['is_available'] ?? false,
-        currentprice: currentPrice,);
+      name: json['name'] ?? '',
+      photos: photos,
+      description: json['description'] ?? '',
+      isAvailable: json['is_available'] ?? false,
+      currentprice: currentPrice,
+      availableQuantity: json['available_quantity']?? 0,
+    );
   }
 }
 

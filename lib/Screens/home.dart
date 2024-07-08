@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:shopat/Screens/animatedloading.dart';
 import 'package:shopat/model/productsdata.dart';
 import 'package:http/http.dart' as http;
 
@@ -18,10 +19,9 @@ class _HomeState extends State<Home> {
     final apiKey = dotenv.env['Apikey'];
     final appId = dotenv.env['Appid'];
     final orgId = dotenv.env['organization_id'];
-
     const url = 'https://api.timbu.cloud/products';
-    print("$url?${orgId!}&${apiKey!}&${appId!}");
-    final response = await http.get(Uri.parse("$url?organization_id=$orgId&Apikey=$apiKey&Appid=$appId"));
+    final response = await http.get(
+        Uri.parse("$url?organization_id=$orgId&Apikey=$apiKey&Appid=$appId"));
     if (response.statusCode == 200) {
       return ProductsResponse.fromJson(jsonDecode(response.body));
     } else {
@@ -62,7 +62,7 @@ class _HomeState extends State<Home> {
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(
-                          child: RefreshProgressIndicator(),
+                          child: Animatedloading(),
                         );
                       } else if (!snapshot.hasData ||
                           snapshot.data!.items.isEmpty) {
@@ -123,7 +123,7 @@ class _HomeState extends State<Home> {
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
-                        child: LinearProgressIndicator(),
+                        child: Animatedloading(),
                       );
                     } else if (!snapshot.hasData ||
                         snapshot.data!.items.isEmpty) {
@@ -162,7 +162,7 @@ class _HomeState extends State<Home> {
                                           ),
                                   ),
                                   const SizedBox(
-                                    height: 6,
+                                    height: 4,
                                   ),
                                   Column(
                                     crossAxisAlignment:
@@ -176,7 +176,7 @@ class _HomeState extends State<Home> {
                                             fontWeight: FontWeight.bold),
                                       ),
                                       const SizedBox(
-                                        height: 6,
+                                        height: 4,
                                       ),
                                       Text(
                                         prefix.description.toString(),
@@ -186,7 +186,7 @@ class _HomeState extends State<Home> {
                                             color: Colors.grey),
                                       ),
                                       const SizedBox(
-                                        height: 6,
+                                        height: 4,
                                       ),
                                       Text(
                                         '₦${prefix.currentprice.toString()}',
@@ -195,14 +195,20 @@ class _HomeState extends State<Home> {
                                             fontSize: 16),
                                       ),
                                       const SizedBox(
-                                        height: 6,
+                                        height: 4,
+                                      ),
+                                      Text(
+                                        "${prefix.availableQuantity.toInt()} In Stock",
+                                      ),
+                                      const SizedBox(
+                                        height: 4,
                                       ),
                                       Text(
                                         availableText,
                                         style: TextStyle(color: Colors.green),
                                       ),
                                       const SizedBox(
-                                        height: 6,
+                                        height: 4,
                                       ),
                                       SizedBox(
                                         height: 46,
