@@ -11,8 +11,11 @@ Future<void> main() async {
   // WidgetsFlutterBinding.ensureInitialized();
   // final envString = await rootBundle.loadString('assets/.env');
   // await dotenv.load(fileName: envString);
-
-  await dotenv.load(fileName: ".env.prod");
+  if (kReleaseMode) {
+    await dotenv.load(fileName: ".env.prod");
+  } else {
+    await dotenv.load(fileName: ".env");
+  }
 
   runApp(const Shopat());
 }
