@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             const Padding(
-              padding: EdgeInsets.fromLTRB(8, 8, 8, 6),
+              padding: EdgeInsets.fromLTRB(8, 4, 8, 4),
               child: Text(
                 'Hot Sellers 🔥',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
@@ -58,60 +58,68 @@ class _HomeState extends State<Home> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
                 child: FutureBuilder<ProductsResponse>(
-                    future: products,
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                          child: Animatedloading(),
-                        );
-                      } else if (!snapshot.hasData ||
-                          snapshot.data!.items.isEmpty) {
-                        return const Center(child: Text('No products found'));
-                      } else if (snapshot.hasError) {
-                        return Center(child: Text('Error: ${snapshot.error}'));
-                      } else {
-                        final random = Random();
-                        final List<Productsdata> items =
-                            List.from(snapshot.data!.items);
-                        items.shuffle(random);
-                        final int subsetLength = 5;
-                        final List<Productsdata> randomSubset =
-                            items.take(subsetLength).toList();
-                        return ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: randomSubset.length,
-                            itemBuilder: (context, index) {
-                              var prefix = randomSubset[index];
-                              return Row(
-                                children: [
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(4, 0, 0, 0),
-                                    child: Card(
-                                      elevation: 4,
-                                      color: Colors.white,
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(12),
-                                        child: prefix.photos.isNotEmpty
-                                            ? Padding(
-                                                padding:
-                                                    const EdgeInsets.fromLTRB(
-                                                        2, 2, 2, 2),
-                                                child: Image.network(
-                                                  'https://api.timbu.cloud/images/${prefix.photos[0].url}',
-                                                  height: 60,
-                                                  width: 60,
-                                                ),
-                                              )
-                                            : Container(),
-                                      ),
-                                    ),
+                  future: products,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: Animatedloading(),
+                      );
+                    } else if (!snapshot.hasData ||
+                        snapshot.data!.items.isEmpty) {
+                      return const Center(
+                        child: Text('No products found'),
+                      );
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: Text('Error: ${snapshot.error}'),
+                      );
+                    } else {
+                      final random = Random();
+                      final List<Productsdata> items =
+                          List.from(snapshot.data!.items);
+                      items.shuffle(random);
+                      const int subsetLength = 5;
+                      final List<Productsdata> randomSubset =
+                          items.take(subsetLength).toList();
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: randomSubset.length,
+                        itemBuilder: (context, index) {
+                          var prefix = randomSubset[index];
+                          return Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(4, 0, 0, 0),
+                                child: Card(
+                                  elevation: 4,
+                                  color: Colors.white,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: prefix.photos.isNotEmpty
+                                        ? Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                              2,
+                                              2,
+                                              2,
+                                              2,
+                                            ),
+                                            child: Image.network(
+                                              'https://api.timbu.cloud/images/${prefix.photos[0].url}',
+                                              height: 60,
+                                              width: 60,
+                                            ),
+                                          )
+                                        : Container(),
                                   ),
-                                ],
-                              );
-                            });
-                      }
-                    }),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+                  },
+                ),
               ),
             ),
             Expanded(
@@ -154,12 +162,10 @@ class _HomeState extends State<Home> {
                                     child: prefix.photos.isNotEmpty
                                         ? Image.network(
                                             'https://api.timbu.cloud/images/${prefix.photos[0].url}')
-                                        : Container(
-                                            child: Center(
-                                              child:
-                                                  Text('Image will show here'),
-                                            ),
-                                          ),
+                                        : const Center(
+                                          child:
+                                              Text('Image will show here'),
+                                        ),
                                   ),
                                   const SizedBox(
                                     height: 4,
@@ -205,7 +211,7 @@ class _HomeState extends State<Home> {
                                       ),
                                       Text(
                                         availableText,
-                                        style: TextStyle(color: Colors.green),
+                                        style: const TextStyle(color: Colors.green),
                                       ),
                                       const SizedBox(
                                         height: 4,

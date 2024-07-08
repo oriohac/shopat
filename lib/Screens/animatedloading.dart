@@ -15,13 +15,13 @@ class Animatedloading extends StatelessWidget {
             width: double.infinity,
             color: Colors.white,
           ),
-          SizedBox(height: 6.0),
+          const SizedBox(height: 6.0),
           Container(
             width: double.infinity,
             height: 20.0,
             color: Colors.white,
           ),
-          SizedBox(height: 4.0),
+          const SizedBox(height: 4.0),
           Container(
             width: 150.0,
             height: 7.0,
