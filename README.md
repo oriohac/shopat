@@ -29,7 +29,7 @@ When you are done downloading, click the shopat.apk file, follow the prompts and
 
 You can demo the app on appetize.io when you follow the below link.
 
-[Demo on Apetize.io here](https://appetize.io/app/android/com.example.shopat?device=pixel7&osVersion=13.0)
+[Demo on Apetize.io here](https://appetize.io/app/b_lnttvqamdyt3niyiplds5idejm)
 
 # About the App
 The application is about getting data supplied to [timbu.cloud](https://timbu.cloud), from an API to the frontend of the application.
