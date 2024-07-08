@@ -23,7 +23,7 @@ When you are in the directory use the below code to run the app.
 ## Installation
 For you to run the app on a physical device, you can download the applicatio the link below:
 
-[Please Download here](https://drive.google.com/drive/folders/1LWRW6niKgF0PF9DiS0kIJSP9l7CCDhJ5?usp=sharing)
+[Please Download here](https://drive.google.com/file/d/1hGgvwUIX37q-06AxhIyCiFn8g78ZyGXM/view?usp=drive_link)
 
 When you are done downloading, click the shopat.apk file, follow the prompts and install.
 
